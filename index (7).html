@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arsheen Sayeed Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: single reading column, a K–8 scope-and-sequence strip as the signature element, ruled sections like a curriculum binder */
+:root{
+  --bg:#f7f8fa; --surface:#ffffff; --ink:#18212f; --muted:#556072;
+  --rule:#d9dee6; --accent:#1f4e8c; --accent-soft:#e3ebf6; --mark:#f2c94c;
+  --done:#1f4e8c; --doing:#8fb0d9;
+  --display:"Newsreader", Georgia, "Times New Roman", serif;
+  --body:"Public Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161e; --surface:#18202b; --ink:#e7ebf1; --muted:#9aa6b6;
+  --rule:#2b3646; --accent:#8db4ea; --accent-soft:#1d2a3c; --mark:#e0b93f;
+  --done:#8db4ea; --doing:#3d5577; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#11161e; --surface:#18202b; --ink:#e7ebf1; --muted:#9aa6b6;
+  --rule:#2b3646; --accent:#8db4ea; --accent-soft:#1d2a3c; --mark:#e0b93f;
+  --done:#8db4ea; --doing:#3d5577; color-scheme:dark }
+
+body{background:var(--bg); color:var(--ink); font-family:var(--body); font-size:16px; line-height:1.6}
+.wrap{max-width:860px; margin:0 auto; padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px)); padding-block:56px 72px; display:flex; flex-direction:column; gap:56px}
+h1,h2,h3{font-family:var(--display); font-weight:600; text-wrap:balance; margin:0; line-height:1.15}
+h1{font-size:clamp(2.4rem, 6vw, 3.6rem); letter-spacing:-.01em}
+h2{font-size:1.65rem}
+h3{font-size:1.15rem}
+p{margin:0}
+.label{font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; color:var(--muted)}
+a{color:var(--accent); text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:3px}
+
+/* Hero */
+.hero{display:flex; flex-direction:column; gap:18px}
+.role{font-size:1.15rem; color:var(--muted); max-width:62ch}
+.role strong{color:var(--ink); font-weight:600}
+.hl{background:linear-gradient(transparent 62%, var(--mark) 62%); padding:0 2px}
+.facts{display:flex; flex-wrap:wrap; gap:8px 24px; font-size:.92rem; color:var(--muted)}
+.facts span strong{color:var(--ink); font-weight:600}
+.contact{display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:4px}
+.email{font-family:var(--mono); font-size:.92rem; background:var(--surface); border:1px solid var(--rule); padding:8px 12px; border-radius:6px; user-select:all}
+.btn{font:600 .9rem var(--body); background:var(--accent); color:var(--bg); border:0; border-radius:6px; padding:9px 14px; cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.copied{font-size:.85rem; color:var(--muted)}
+
+/* Scope strip */
+.scope{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:22px; display:flex; flex-direction:column; gap:14px}
+.grid{display:grid; grid-template-columns:repeat(9, minmax(0,1fr)); gap:6px}
+.cell{display:flex; flex-direction:column; align-items:center; gap:6px}
+.bar{width:100%; height:44px; border-radius:4px}
+.bar.done{background:var(--done)}
+.bar.doing{background:repeating-linear-gradient(135deg, var(--doing) 0 6px, transparent 6px 11px); border:1.5px solid var(--doing)}
+.cell span{font-family:var(--mono); font-size:.75rem; color:var(--muted)}
+.legend{display:flex; flex-wrap:wrap; gap:6px 20px; font-size:.85rem; color:var(--muted)}
+.legend i{display:inline-block; width:14px; height:10px; border-radius:2px; margin-right:6px; vertical-align:middle}
+.legend .d{background:var(--done)}
+.legend .p{background:repeating-linear-gradient(135deg, var(--doing) 0 3px, transparent 3px 6px); border:1px solid var(--doing)}
+
+/* Sections */
+section{display:flex; flex-direction:column; gap:20px; border-top:1px solid var(--rule); padding-top:28px}
+.head{display:flex; flex-direction:column; gap:6px}
+.items{display:grid; gap:22px}
+.item{display:grid; grid-template-columns:150px minmax(0,1fr); gap:6px 24px}
+.item .when{font-family:var(--mono); font-size:.8rem; color:var(--muted); padding-top:3px}
+.item p{color:var(--muted); max-width:64ch}
+.item h3 + p{margin-top:4px}
+ul.clean{margin:8px 0 0; padding-left:18px; color:var(--muted); display:grid; gap:4px; max-width:64ch}
+
+.samples{display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px}
+.sample{background:var(--surface); border:1px solid var(--rule); border-radius:10px; padding:18px; display:flex; flex-direction:column; gap:8px}
+.sample p{color:var(--muted); font-size:.95rem}
+.sample .tag{align-self:flex-start; font-family:var(--mono); font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; padding:3px 8px; border-radius:99px; background:var(--accent-soft); color:var(--accent)}
+.sample .go{margin-top:auto; font-weight:600; font-size:.95rem}
+.sample .req{margin-top:auto; font-size:.88rem; color:var(--muted)}
+
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chips span{font-size:.88rem; border:1px solid var(--rule); background:var(--surface); padding:5px 11px; border-radius:99px}
+
+.creds{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px 32px}
+.creds div{display:flex; flex-direction:column; gap:2px}
+.creds p{color:var(--muted); font-size:.95rem}
+
+footer{font-size:.85rem; color:var(--muted); border-top:1px solid var(--rule); padding-top:20px}
+
+@media (max-width:640px){
+  .item{grid-template-columns:minmax(0,1fr)}
+  .samples,.creds{grid-template-columns:minmax(0,1fr)}
+  .grid{grid-template-columns:repeat(5, minmax(0,1fr)); row-gap:12px}
+  .wrap{padding-block:36px 56px; gap:44px}
+}
+@media (prefers-reduced-motion:no-preference){ .bar{transition:transform .2s} .cell:hover .bar{transform:translateY(-2px)} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <p class="label">Curriculum Developer · Instructional Designer · K–12 School Leader</p>
+    <h1>Arsheen Sayeed</h1>
+    <p class="role">I have been building curriculum since <span class="hl">2007</span>: first for an entire high school history department, then for a K–12 school as principal, and now <strong>K–8 curricula designed from scratch</strong>, with AI as a design partner for workbooks, lessons and curriculum websites.</p>
+    <div class="facts">
+      <span><strong>Virginia SOL</strong> and <strong>Common Core</strong></span>
+      <span><strong>K–12</strong> curriculum design since <strong>2007</strong></span>
+      <span>Based in <strong>Northern Virginia</strong> · remote</span>
+      <span>English · Urdu · Hindi</span>
+    </div>
+    <div class="contact">
+      <span class="email" id="email">arsheen.sayeed@gmail.com</span>
+      <button class="btn" id="copyBtn" type="button">Copy email</button>
+      <span class="copied" id="copyMsg" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <div class="scope" aria-label="Current curriculum build, Kindergarten through Grade 8">
+    <div class="head">
+      <p class="label">Current build · scope and sequence</p>
+      <h3>A full K–8 curriculum, designed grade by grade</h3>
+    </div>
+    <div class="grid">
+            <div class="cell"><div class="bar done"></div><span>K</span></div>
+      <div class="cell"><div class="bar done"></div><span>1</span></div>
+      <div class="cell"><div class="bar done"></div><span>2</span></div>
+      <div class="cell"><div class="bar done"></div><span>3</span></div>
+      <div class="cell"><div class="bar done"></div><span>4</span></div>
+      <div class="cell"><div class="bar doing"></div><span>5</span></div>
+      <div class="cell"><div class="bar doing"></div><span>6</span></div>
+      <div class="cell"><div class="bar doing"></div><span>7</span></div>
+      <div class="cell"><div class="bar doing"></div><span>8</span></div>
+    </div>
+    <div class="legend">
+      <span><i class="d"></i>Complete: maps, teacher guides, student packets</span>
+      <span><i class="p"></i>In design</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="head">
+      <p class="label">Curriculum since 2007</p>
+      <h2>Three stages of curriculum leadership</h2>
+    </div>
+    <div class="items">
+      <div class="item">
+        <p class="when">2007 onward<br>New York City</p>
+        <div>
+          <h3>Social Studies Teacher and Global History Curriculum Lead, Manhattan Center for Science and Mathematics</h3>
+          <p>Took charge of the entire Grade 9 and 10 Global History curriculum for the department and wrote it so every teacher taught from the same plan.</p>
+          <ul class="clean">
+            <li>Pacing guides and scope and sequence for the full two-year course</li>
+            <li>Step-by-step daily lessons and student handouts</li>
+            <li>Prepared and copied the materials for the whole department, so every class received the same resources</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <p class="when">Principal<br>Queens, NY</p>
+        <div>
+          <h3>Principal, Al Mamoor School, Fresh Meadows</h3>
+          <p>Guided teachers in creating curriculum maps for every grade, Kindergarten through Grade 12.</p>
+        </div>
+      </div>
+      <div class="item">
+        <p class="when">Now<br>Virginia</p>
+        <div>
+          <h3>Principal and K–8 Curriculum Designer, Pre-K–8 independent school</h3>
+          <ul class="clean">
+            <li>Designing complete K–8 curricula from scratch, aligned to Virginia SOL; Kindergarten through Grade 4 is complete</li>
+            <li>Curriculum maps that close standards gaps, plus teacher guides and student workbooks for Math, ELA, Science and Social Studies</li>
+            <li>Turning the curriculum into websites for teachers and families</li>
+          </ul>
+        </div>
+      </div>
+      <div class="item">
+        <p class="when">Publishers</p>
+        <div>
+          <h3>Curriculum development with Savvas, Five Ponds Press and Amplify</h3>
+          <p>Curriculum development work with three major K–12 publishers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <p class="label">How I work now</p>
+      <h2>AI-assisted curriculum design</h2>
+    </div>
+    <p style="color:var(--muted);max-width:64ch">I use AI to build at a scale one designer could not reach alone, while every unit is planned, reviewed and revised against standards and classroom reality.</p>
+    <div class="samples">
+      <article class="sample">
+        <span class="tag">Lessons</span>
+        <h3>Engaging, not read-alouds</h3>
+        <p>Lessons built around discussion, guided notes, investigations and practice, so students do the thinking instead of listening to the textbook read aloud.</p>
+      </article>
+      <article class="sample">
+        <span class="tag">Math</span>
+        <h3>Math broken into small steps</h3>
+        <p>Each skill split into clear, guided steps with worked examples and plenty of practice, so students can follow it and families can help at home.</p>
+      </article>
+      <article class="sample">
+        <span class="tag">Workbooks</span>
+        <h3>Teacher guides and student workbooks</h3>
+        <p>Matched sets: a short teacher guide with timed lessons and answer keys, and a student workbook with no answers.</p>
+      </article>
+      <article class="sample">
+        <span class="tag">Websites</span>
+        <h3>Curriculum as a website</h3>
+        <p>Curriculum maps and family guides published as websites organized by grade, so teachers and parents can find everything in one place.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <p class="label">Work samples</p>
+      <h2>Selected work</h2>
+    </div>
+    <p style="color:var(--muted);max-width:64ch">Selected student workbooks from Kindergarten through Grade 8, across Science, Social Studies and Mathematics. Each one opens as a PDF.</p>
+    <div class="samples">
+      <article class="sample">
+        <span class="tag">Grades 7–8 · Physical Science</span>
+        <h3>Properties, Changes, Bonding and Conservation</h3>
+        <p>Reading-focused worksheets with raised rigor: aims written as questions, key test content highlighted in each reading, board notes, a Do Now and a short activity in every lesson.</p>
+        <a class="go" href="samples/grade7-8-physical-science.pdf" target="_blank" rel="noopener">Open the PDF (13 pages) ↗</a>
+      </article>
+      <article class="sample">
+        <span class="tag">Grade 6 · U.S. History</span>
+        <h3>Jim Crow, Civil Rights and Women’s Vote</h3>
+        <p>A student packet of two-page daily lessons: aim, Do Now, board notes, a reading with questions and a short activity that helps students retain the content.</p>
+        <a class="go" href="samples/grade6-us-history.pdf" target="_blank" rel="noopener">Open the PDF (21 pages) ↗</a>
+      </article>
+      <article class="sample">
+        <span class="tag">Grade 5 · Science</span>
+        <h3>Electricity and Magnetism</h3>
+        <p>A 39-page workbook of twelve lessons. Each lesson has a Read page, a Think page and an Answer page, written so students can follow it on their own.</p>
+        <a class="go" href="samples/grade5-science-electricity.pdf" target="_blank" rel="noopener">Open the PDF (39 pages) ↗</a>
+      </article>
+      <article class="sample">
+        <span class="tag">Grade 4 · Science</span>
+        <h3>Earth, Moon and Sun</h3>
+        <p>A lesson book of eleven two-page lessons on day and night, seasons, moon phases and tides, with a spiral check, a CER writing task and a full answer key.</p>
+        <a class="go" href="samples/grade4-science-earth-moon-sun.pdf" target="_blank" rel="noopener">Open the PDF (34 pages) ↗</a>
+      </article>
+      <article class="sample">
+        <span class="tag">Grade 4 · Mathematics</span>
+        <h3>Multiplying by One-Digit Numbers</h3>
+        <p>Multiplication broken into small, guided steps: learn it, try it together, practice, then check yourself. Includes an educator’s guide, SAT connections and an answer key.</p>
+        <a class="go" href="samples/grade4-math-multiplying.pdf" target="_blank" rel="noopener">Open the PDF (50 pages) ↗</a>
+      </article>
+      <article class="sample">
+        <span class="tag">Kindergarten · Science</span>
+        <h3>Pushes and Pulls</h3>
+        <p>A picture-led packet for children who are not yet reading: sorting, cut-and-paste, a ramp investigation and a certificate to finish the unit.</p>
+        <a class="go" href="samples/kindergarten-science-pushes-pulls.pdf" target="_blank" rel="noopener">Open the PDF (11 pages) ↗</a>
+      </article>
+      <article class="sample" style="grid-column:1/-1">
+        <span class="tag">Live site</span>
+        <h3>Curriculum Hub</h3>
+        <p>A curriculum website organized by grade, with family guides and reading lists for parents and teachers.</p>
+        <a class="go" href="https://book514.github.io/curriculum-portfolio/" target="_blank" rel="noopener">View the site ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <p class="label">Expertise</p>
+      <h2>What I build</h2>
+    </div>
+    <div class="chips">
+      <span>Curriculum maps</span><span>Scope and sequence</span><span>Pacing guides</span>
+      <span>Teacher guides</span><span>Student packets and workbooks</span><span>Assessments and answer keys</span>
+      <span>Standards gap analysis</span><span>Virginia SOL alignment</span><span>Common Core alignment</span>
+      <span>Social Studies</span><span>Science</span><span>ELA</span><span>Mathematics</span>
+      <span>Content review and QA</span><span>AI-assisted design</span><span>Curriculum websites</span><span>Master scheduling</span><span>Accreditation</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="head">
+      <p class="label">Credentials</p>
+      <h2>Education and certification</h2>
+    </div>
+    <div class="creds">
+      <div><h3>M.S., School Leadership</h3><p>College of Saint Rose, 2023</p></div>
+      <div><h3>Degrees</h3><p>Queens College, City University of New York</p></div>
+      <div><h3>Professional certification</h3><p>New York State teaching and school leadership</p></div>
+      <div><h3>Recognition</h3><p>New York State Assembly Citations</p></div>
+    </div>
+  </section>
+
+  <footer>Arsheen Sayeed · Curriculum Developer and Instructional Designer · arsheen.sayeed@gmail.com</footer>
+</div>
+
+<script>
+(function(){
+  var btn=document.getElementById('copyBtn'), msg=document.getElementById('copyMsg'), el=document.getElementById('email');
+  function selectIt(){ var r=document.createRange(); r.selectNodeContents(el); var s=window.getSelection(); s.removeAllRanges(); s.addRange(r); }
+  btn.addEventListener('click', function(){
+    var text=el.textContent.trim();
+    try{
+      navigator.clipboard.writeText(text).then(function(){ msg.textContent='Copied'; }, function(){ selectIt(); msg.textContent='Selected, press Ctrl+C'; });
+    }catch(e){ selectIt(); msg.textContent='Selected, press Ctrl+C'; }
+  });
+})();
+</script>
+</body>
+</html>
